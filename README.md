@@ -76,11 +76,55 @@ flink run -c org.example.FlinkKafkaValidationJob target/Job-1.0-SNAPSHOT.jar
 
 ---
 
+## 📄 Anexo: Código Fuente
+
+### `FlinkKafkaValidationJob.java`
+
+```java
+public class FlinkKafkaValidationJob {
+    // Código principal para la ingesta y validación en Flink
+}
+```
+
+### `CassandraSinkFunction.java`
+
+```java
+public class CassandraSinkFunction extends RichSinkFunction<LecturaSensor> {
+    // Código para insertar los datos validados en Cassandra
+}
+```
+
+### `pom.xml`
+
+```xml
+<!-- Archivo de configuración Maven para empaquetar el Job -->
+```
+
+### `docker-compose.yml`
+
+```yaml
+# Definición de los contenedores Kafka, Zookeeper, Cassandra y Flink
+```
+
+### `DB Scripts.sql`
+
+```sql
+CREATE KEYSPACE sensores_ks WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+
+CREATE TABLE sensores_ks.lecturas_sensores (
+    sensor_id int,
+    timestamp bigint,
+    temperatura double,
+    humedad double,
+    PRIMARY KEY (sensor_id, timestamp)
+);
+```
+
+---
+
 ## 📂 Licencia
 
 Uso académico. Repositorio privado. Solicitar acceso al autor.
-
----
 
 👉 **Autor:** Sebastian Villacreces
 👉 **Proyecto:** Trabajo Fin de Máster - Validación de Datos en Tiempo Real
